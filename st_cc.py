@@ -274,7 +274,7 @@ class CCAutoComplete(sublime_plugin.EventListener):
 
   def on_post_save_async(self, view):
     if not can_complete(view):
-      return 
+      return
 
     settings = Complete.get_settings()
     project_settings = view.settings()
@@ -288,7 +288,7 @@ class CCAutoComplete(sublime_plugin.EventListener):
       sym.reparse()
     self.dirty = False
     digst = sym.diagnostic()
-    
+
     output = "\n".join([err for _, (_, _, _, _, err) in digst if not should_be_filtered(err, filters)])
     clang_error_panel.set_data(output)
     clang_error_panel.error_marks(view, digst, not hide_error_mark, should_be_filtered, filters)
@@ -302,7 +302,7 @@ class CCAutoComplete(sublime_plugin.EventListener):
       elif hide_error_panel_when_empty:
         window.run_command("clang_toggle_panel", {"show": False})
 
-  
+
   def on_query_completions(self, view, prefix, locations):
     line, col = view.rowcol(locations[0])
     line += 1
@@ -342,7 +342,7 @@ class CCAutoComplete(sublime_plugin.EventListener):
       self.t.start()
       if prefix == "":
         return ([], flag)
-      else:  
+      else:
         return None
 
     else:

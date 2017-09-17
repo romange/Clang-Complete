@@ -15,9 +15,9 @@
     // add include options to clang
     // this can also be specified as project specific options.
     // add something like the following to the `settings` section in your `<name>.sublime-project` file:
-    // 
-    // 
-    //     
+    //
+    //
+    //
     // "settings":
     // {
     //     "cc_include_options":
@@ -32,12 +32,8 @@
     // if "cc_include_options" exists in your project settings, it'll override rather than add
     // to the "include_options" defined in cc.sublime-settings.
    "include_options": [
-        "-isystem", "/usr/include/c++/4.8",
-        "-isystem", "/usr/include/x86_64-linux-gnu/c++/4.8",
-        "-isystem", "/usr/include/c++/4.8/backward",
         "-isystem", "/usr/local/include",
         "-isystem", "/usr/lib/llvm-3.8/lib/clang/3.8.0/include",
-        "-isystem", "/usr/include/x86_64-linux-gnu",
         "-isystem", "/usr/include",
     ],
 
@@ -49,4 +45,7 @@
 
     // automatically hide the panel when the panel is empty
     "hide_error_panel_when_empty": true,
+    "display_filters" : [
+        "warning: #pragma once"
+    ]
 }
