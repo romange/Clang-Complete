@@ -182,7 +182,7 @@ class Complete(object):
 
     for v in include_opts:
       opt.append(v)
-    print("clang options: ", opt)
+    print("clang options: ", " ".join(opt))
     return opt
 
   @staticmethod
