@@ -43,11 +43,13 @@ all: cc_lib
 linux: linux_config cc_lib
 
 linux_config:
-	sudo apt-get install clang-3.5
-	sudo ln -sf /usr/lib/llvm-3.5/lib/libclang-3.5.so.1 ./lib/libclang.so
+	ln -sf /usr/lib/llvm-4.0/lib/libclang.so.1 ./lib/libclang.so
 
-cc_lib: $(FILES)
+cc_build: $(FILES)
 	$(CC) -shared -o $(LIBCC)  $(CFLAGS) $^ -L$(CLANG) $(LIB_FLAG) -I$(CLANG)/include  -lclang
+
+cc_lib: linux_config cc_build
+
 
 link:
 	ln -s $(PWD) $(ST3)
