@@ -3,7 +3,9 @@
 	"additional_language_options":
     {
         // For example, you can use "c++": ["-std=c++11"] to enable C++11 features.
-        "c++" : ["-std=c++14", "-Wno-inconsistent-missing-override"],
+        "c++" : ["-std=c++14", "-Wno-inconsistent-missing-override", "-Wno-deprecated",
+                 "-Wno-pragma-once-outside-header", "-DBOOST_NO_CXX17_STD_INVOKE",
+                 "-DBOOST_NO_CXX17_STD_APPLY"],
         "c": ["-std=c99"],
         "objc": [],
         "objc++": []
