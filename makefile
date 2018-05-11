@@ -13,7 +13,7 @@ endif
 
 # linux
 ifeq ($(UNAME_S), Linux)
-	CC = gcc
+	CC = clang
 	CFLAGS = -g -Wall -fPIC
 	ST3 = ~/.config/sublime-text-3/Packages/Clang-Complete
 	LIBCC = lib/libcc.so
@@ -40,15 +40,13 @@ src/py_bind.c
 all: cc_lib
 
 
-linux: linux_config cc_lib
-
-linux_config:
-	ln -sf /usr/lib/llvm-4.0/lib/libclang.so.1 ./lib/libclang.so
+linux: cc_lib
 
 cc_build: $(FILES)
-	$(CC) -shared -o $(LIBCC)  $(CFLAGS) $^ -L$(CLANG) $(LIB_FLAG) -I$(CLANG)/include  -lclang
+	$(CC) -shared -o $(LIBCC)  $(CFLAGS) $^ -L/usr/lib/llvm-3.9/lib $(LIB_FLAG) -I$(CLANG)/include \
+	      -l:libclang.so.1
 
-cc_lib: linux_config cc_build
+cc_lib: cc_build
 
 
 link:
@@ -60,7 +58,6 @@ cc: cc_lib
 
 trie: src/cc_trie.c test/test_trie.c test/token.h
 	$(CC) -o trie $(CFLAGS) src/cc_trie.c test/test_trie.c
-
 
 
 .PHONY : clean
