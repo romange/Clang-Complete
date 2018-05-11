@@ -35,7 +35,7 @@
     // to the "include_options" defined in cc.sublime-settings.
    "include_options": [
         "-isystem", "/usr/local/include",
-        "-isystem", "/usr/lib/llvm-3.8/lib/clang/3.8.0/include",
+        "-isystem", "/usr/lib/llvm-3.9/lib/clang/3.9.0/include",
         "-isystem", "/usr/include",
     ],
 
